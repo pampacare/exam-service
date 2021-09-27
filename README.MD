@@ -1,3 +1,6 @@
-- Criar .env
-- Executar `yarn`
-- Executar `yarn dev`
+- Caso de uso:
+
+- Cadastrar consulta
+- Recuperar Consulta por id do cão
+
+
