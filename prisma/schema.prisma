@@ -12,7 +12,7 @@ model exam {
   timestamp        DateTime
   observation      String?
   lvc              Boolean
-  dog_id           Int
+  dog_id           String
   test             test[]
   treatment        treatment[]
   symptom_has_exam symptom_has_exam[]
