@@ -1,0 +1,57 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model exam {
+  id               Int                @id @default(autoincrement())
+  timestamp        DateTime
+  observation      String?
+  lvc              Boolean
+  dog_id           Int
+  test             test[]
+  treatment        treatment[]
+  symptom_has_exam symptom_has_exam[]
+}
+
+model test_type {
+  id   Int    @id @default(autoincrement())
+  name String
+  test test[]
+}
+
+model test {
+  id           Int       @id @default(autoincrement())
+  timestamp    DateTime
+  exam         exam      @relation(fields: [exam_id], references: [id])
+  exam_id      Int
+  test_type    test_type @relation(fields: [test_type_id], references: [id])
+  test_type_id Int
+}
+
+model treatment {
+  id        Int      @id @default(autoincrement())
+  type      String
+  timestamp DateTime
+  exam      exam     @relation(fields: [exam_id], references: [id])
+  exam_id   Int
+}
+
+model symptom {
+  id               Int                @id @default(autoincrement())
+  description      String
+  symptom_has_exam symptom_has_exam[]
+}
+
+model symptom_has_exam {
+  symptom    symptom @relation(fields: [symptom_id], references: [id])
+  symptom_id Int
+  exam       exam    @relation(fields: [exam_id], references: [id])
+  exam_id    Int
+
+  @@id([symptom_id, exam_id])
+}
