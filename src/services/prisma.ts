@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/indent */
 import { PrismaClient } from '@prisma/client'
 
 // add prisma to the NodeJS global type
 interface CustomNodeJsGlobal extends NodeJS.Global {
-  prisma: PrismaClient
+    prisma: PrismaClient
 }
 
 // Prevent multiple instances of Prisma Client in development
