@@ -14,10 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Chek EsLint
-      run: yarn lint
-
+  
     - name: Install Node.js
       uses: actions/setup-node@v1
       with:
@@ -26,3 +23,6 @@ jobs:
     - run: yarn test
       env:
         CI: true
+
+    - name: Chek EsLint
+      run: yarn lint
