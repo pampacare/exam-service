@@ -17,6 +17,7 @@
     "model:sync": "prisma migrate dev",
     "build": "yarn model:sync && tsc --project ./",
     "test": "jest --passWithNoTests --runInBand",
+    "jest:conf": "yarn ts-jest config:init",
     "lint": "eslint src --ext ts,tsx"
   },
   "devDependencies": {
