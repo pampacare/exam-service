@@ -22,8 +22,5 @@ jobs:
     - name: install Dependencies
       run: yarn
 
-    - name: tests
-      run: yarn test
-
     - name: Chek EsLint
       run: yarn lint
