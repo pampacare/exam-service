@@ -20,7 +20,7 @@ jobs:
       with:
         node-version: 14.x
     - run: yarn
-    - run jest:conf
+    - run: yarn jest:conf
     - run: yarn test
       env:
         CI: true
