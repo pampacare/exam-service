@@ -19,8 +19,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 14.x
+
     - name: install Dependencies
       run: yarn
+
+    - name: check test
+      run: yarn test
 
     - name: Chek EsLint
       run: yarn lint
