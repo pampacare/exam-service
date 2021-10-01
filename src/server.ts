@@ -7,6 +7,6 @@ app.use(express.json())
 
 app.use(router)
 
-app.listen(3333, () =>
-  console.log('🚀 REST API server ready at: http://localhost:3333')
+app.listen(3334, () =>
+  console.log('🚀 REST API server ready at: http://localhost:3334')
 )
