@@ -5,14 +5,9 @@ import { prisma } from '../../services/'
 class ReturnSymptomsController {
     async execute(request: Request, response: Response): Promise<Response> {
         try {
-            const exams = await prisma.symptom.findMany({
-                select: {
-                    id: true,
-                    description: true
-                }
-            })
+            const symptoms = await prisma.symptom.findMany()
             return response.json({
-                body: exams
+                body: symptoms
             })
         } catch (erro: any) {
             return response.status(400).json({
