@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/space-before-function-paren */
-import { Response } from 'express'
+import { Request, Response } from 'express'
 import { prisma } from '../../services'
 
 class GetSymptomsController {
-  async execute(response: Response): Promise<Response> {
+  async execute(request: Request, response: Response): Promise<Response> {
     try {
       const symptoms = await prisma.symptom.findMany({
         select: {
@@ -15,7 +15,9 @@ class GetSymptomsController {
         body: symptoms
       })
     } catch (error: any) {
-      return response.status(400).json({ message: error.message })
+      return response.status(400).json({
+        message: error.message
+      })
     }
   }
 }
