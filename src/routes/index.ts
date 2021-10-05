@@ -1,9 +1,7 @@
 import { Router } from 'express'
-
-import { examRoutes } from './exam.routers'
-
+import { examsRoutes } from '../routes/exam.routes'
 const router = Router()
 
-examRoutes(router)
+examsRoutes(router)
 
 export { router }
