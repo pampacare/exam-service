@@ -1,8 +1,8 @@
-import { Request, Response } from 'express'
+import { Response } from 'express'
 import { prisma } from '../../services'
 
 class GetSymptomsController {
-  async execute (request: Request, response: Response): Promise<Response> {
+  async execute (response: Response): Promise<Response> {
     try {
       const symptoms = await prisma.symptom.findMany()
       return response.status(201).json(symptoms)
