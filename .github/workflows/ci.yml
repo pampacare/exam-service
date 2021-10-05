@@ -1,4 +1,4 @@
-ame: Exam Service CI Pipeline
+name: Exam Service CI Pipeline
 
 on:
   push:
