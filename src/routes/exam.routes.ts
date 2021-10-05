@@ -2,7 +2,6 @@
 import { Router } from 'express'
 import { FindByDogController } from '../controllers/exams/FindByDogController'
 import { RegisterExamController } from '../controllers/exams/RegisterExamController'
-
 const create = new RegisterExamController()
 const findByDogController = new FindByDogController()
 
