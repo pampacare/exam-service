@@ -6,7 +6,7 @@ import { Request, Response } from 'express'
 class RegisterExamController {
     async execute(request: Request, response: Response): Promise<Response> {
         try {
-            const { lvc, dogId, observation, symptomExamId } = request.body
+            const { lvc, dogId, observation, symptomExamId, treatmentDescription, testId } = request.body
 
             const createExam = await prisma.exam.create({
                 data: {
@@ -14,6 +14,22 @@ class RegisterExamController {
                     timestamp: new Date(),
                     dog_id: dogId,
                     observation: observation
+                }
+            })
+
+            await prisma.treatment.create({
+                data: {
+                    timestamp: new Date(),
+                    exam_id: createExam.id,
+                    type: treatmentDescription
+                }
+            })
+
+            await prisma.test.create({
+                data: {
+                    timestamp: new Date(),
+                    exam_id: createExam.id,
+                    test_type_id: testId
                 }
             })
 
