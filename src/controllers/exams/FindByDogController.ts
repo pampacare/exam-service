@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/space-before-function-paren */
 import { Request, Response } from 'express'
 import { prisma } from '../../services/'
 class FindByDogController {
