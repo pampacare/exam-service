@@ -5,7 +5,12 @@ import { prisma } from '../../services'
 class GetSymptomsController {
   async execute(response: Response): Promise<Response> {
     try {
-      const symptoms = await prisma.symptom.findMany()
+      const symptoms = await prisma.symptom.findMany({
+        select: {
+          id: true,
+          description: true
+        }
+      })
       return response.status(201).json({
         body: symptoms
       })
