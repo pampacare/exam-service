@@ -13,11 +13,12 @@
   },
   "scripts": {
     "dev": "yarn model:sync && yarn server:dev",
+    "start": "node dist/src/server.js",
     "server:dev": "nodemon --files src/server.ts",
     "model:sync": "prisma migrate dev",
     "build": "yarn model:sync && tsc --project ./",
-    "test": "jest",
-    "lint": "eslint src --ext ts,tsx"
+    "test": "jest --passWithNoTests --runInBand",
+    "lint": "yarn eslint \"**/*.ts\""
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

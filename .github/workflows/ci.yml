@@ -1,30 +1,36 @@
-name: Dogs Service CI Pipeline
+ame: Exam Service CI Pipeline
 
 on:
   push:
     branches:
       - master
+      - develop
   pull_request:
     branches:
       - master
-
+      - develop  
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-  
+
     - name: Install Node.js
       uses: actions/setup-node@v1
       with:
         node-version: 14.x
-
-    - name: install Dependencies
+        
+    - name: Create .env file
+      run: |
+        touch .env
+        echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
+        echo SHADOW_DATABASE_URL=${{ secrets.SHADOW_DATABASE_URL }} >> .env
+    - name: Install Dependencies
       run: yarn
 
-    - name: check test
+    - name: Run test
       run: yarn test
 
-    - name: Chek EsLint
+    - name: Check ESLint
       run: yarn lint
